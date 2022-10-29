@@ -1,6 +1,6 @@
-from typing import Text
 from django.contrib import admin
 from .models import Post, Group
+
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('pk', 'text', 'pub_date', 'author', 'group')

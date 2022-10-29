@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Group, Post
 
+
 def index(request):
     template = 'posts/index.html'
     posts = Post.objects.order_by('-pub_date')[:10]
@@ -8,6 +9,7 @@ def index(request):
         'posts': posts,
     }
     return render(request, template, context=context)
+
 
 def group_posts(request, slug):
     template = 'posts/group_list'
