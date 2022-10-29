@@ -22,6 +22,6 @@ def group_posts(request, slug):
     )[:last_posts_quantity]
     context = {
         'group': group,
-        'posts': posts
+        'posts': posts,
     }
     return render(request, template, context)
