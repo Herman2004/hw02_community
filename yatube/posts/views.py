@@ -16,7 +16,7 @@ def index(request):
 
 def group_posts(request, slug):
     template = 'posts/group_list.html'
-    group = get_object_or_404(Group, slug)
+    group = get_object_or_404(Group, slug=slug)
     posts = Post.objects.filter(group=group).order_by(
         '-pub_date'
     )[:last_posts_quantity]
