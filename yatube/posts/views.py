@@ -11,7 +11,7 @@ def index(request):
     context = {
         'posts': posts,
     }
-    return render(request, template, context=context)
+    return render(request, template, context)
 
 
 def group_posts(request, slug):
