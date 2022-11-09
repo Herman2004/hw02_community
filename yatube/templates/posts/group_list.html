@@ -6,8 +6,8 @@
   <div class="container">
     <h1>Записи сообщества {{ group.title }}</h1>
     <p>{{ group.description }}</p>
-    <article>
-      {% include 'includes/article.html' %}
-    </article>
+    {% for post in posts %}
+      {% include 'includes/article.html' with show_address=False %}
+    {% endfor %}
   </div>
 {% endblock %}
