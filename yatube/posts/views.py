@@ -2,26 +2,22 @@ from django.shortcuts import render, get_object_or_404
 from .models import Group, Post
 
 
-last_posts_quantity = 10
+LAST_POSTS_QUANTITY = 10
 
 
 def index(request):
-    template = 'posts/index.html'
-    posts = Post.objects.order_by('-pub_date')[:last_posts_quantity]
+    posts = Post.objects.all()[:LAST_POSTS_QUANTITY]
     context = {
         'posts': posts,
     }
-    return render(request, template, context)
+    return render(request, 'posts/index.html', context)
 
 
 def group_posts(request, slug):
-    template = 'posts/group_list.html'
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).order_by(
-        '-pub_date'
-    )[:last_posts_quantity]
+    posts = Post.objects.all().filter(group=group)[:LAST_POSTS_QUANTITY]
     context = {
         'group': group,
         'posts': posts,
     }
-    return render(request, template, context)
+    return render(request, 'posts/group_list.html', context)
