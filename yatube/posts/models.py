@@ -12,7 +12,7 @@ class Group(models.Model):
     slug = models.SlugField(
         null=True,
         unique=True,
-        verbose_name="Адрес"
+        verbose_name="Идентификатор"
     )
     description = models.TextField(
         verbose_name="Описание"
@@ -30,16 +30,15 @@ class Post(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='posts',
         verbose_name="Автор",
     )
     group = models.ForeignKey(
         Group,
         on_delete=models.SET_NULL,
-        related_name='posts',
         blank=True,
         null=True,
     )
 
     class Meta:
         ordering = ['-pub_date']
+        default_related_name = 'posts'
