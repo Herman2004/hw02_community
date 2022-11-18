@@ -13,6 +13,9 @@
   {% if post.group and show_address %}
     <a href="{% url 'posts:group_list' post.group.slug %}">
       Все записи группы
-    </a>
+    </a><br>
   {% endif %}
+  <a href="{% url 'posts:post_detail' post.pk %}">
+    Подробная информация
+  </a>
 </article>
